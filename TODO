@@ -1,0 +1,4 @@
+Clean up source code
+Add part/leave function
+Create say alias for message function
+Make message function default to groupchat
