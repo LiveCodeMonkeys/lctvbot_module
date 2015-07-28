@@ -54,7 +54,7 @@ var lctvbot = function( config ) {
                     var tmp = msg.split( " " );
                     var command = tmp.shift();
                     var text = tmp.join( " " );
-                    console.log( stanza );
+                    // console.log( stanza );
                     var from;
                     if( stanza.type == 'chat' ) {
                         from = stanza.attrs.from;
@@ -78,7 +78,7 @@ var lctvbot = function( config ) {
             var channel = self.getChannel( stanza );
             var nickname = self.getNickname( stanza );
             var affiliation = stanza.getChild( 'x' ).getChild( 'item' ).attrs.affiliation;
-            console.log( [ channel, nickname, affiliation ] );
+            // console.log( [ channel, nickname, affiliation ] );
             if( typeof stanza.attrs.type !== 'undefined' && stanza.attrs.type == 'unavailable' ) {
                 index = self.channels[ channel ].users.indexOf( nickname )
                 if( index > -1 ) {
@@ -117,7 +117,7 @@ lctvbot.prototype.join = function( channel ) {
     } ).c( 'x', { xmlns: 'http://jabber.org/protocol/muc' } );
     this.client.send( presence );
     this.channels[ channel.substring( 0, channel.indexOf( '@' ) ) ] = { users: [], mods: [] };
-    console.log( this.channels );
+    // console.log( this.channels );
 };
 
 //Set the lctvbots status to available, need to check if LCTV supports this
@@ -139,9 +139,9 @@ lctvbot.prototype.message = function( to, message, type ) {
     if( type == 'groupchat' && to.indexOf( '@' ) == -1 ) {
         to += "@" + this.chatDomain;
     }
-    console.log( [ to, message, type ] );
+    // console.log( [ to, message, type ] );
     stanza = new ltx.Element( 'message', { to: to, type: type, from: this.config.jid } ).c( 'body' ).t( message );
-    console.log( stanza.root().toString() );
+    // console.log( stanza.root().toString() );
     this.client.send( stanza.c( 'body' ).t( message ) );
 };
 
