@@ -9,7 +9,7 @@ var events = require( 'events' );
 //Config
 var version = '0.0.1';
 
-var LCTVBot = function( config ) {
+var lctvbot = function( config ) {
     this.channels = [];
     this.config = config;
     this.chatDomain = "chat.livecoding.tv";
@@ -105,10 +105,10 @@ var LCTVBot = function( config ) {
     } );
 };
 
-util.inherits( LCTVBot, events.EventEmitter );
+util.inherits( lctvbot, events.EventEmitter );
 
 //Join a channel
-LCTVBot.prototype.join = function( channel ) {
+lctvbot.prototype.join = function( channel ) {
     if( channel.indexOf( '@' ) == -1 ) {
         channel += "@" + this.chatDomain;
     }
@@ -120,21 +120,21 @@ LCTVBot.prototype.join = function( channel ) {
     console.log( this.channels );
 };
 
-//Set the LCTVBots status to available, need to check if LCTV supports this
-LCTVBot.prototype.setOnline = function() {
+//Set the lctvbots status to available, need to check if LCTV supports this
+lctvbot.prototype.setOnline = function() {
     var presence = new ltx.Element( 'presence', { } )
         .c( 'show' ).t( 'chat' ).up()
-        .c( 'status' ).t( 'LCTV LCTVBot' );
+        .c( 'status' ).t( 'LCTV lctvbot' );
     this.client.send( presence );
 };
 
 //Get a message from the stanza
-LCTVBot.prototype.getMessage = function( stanza ) {
+lctvbot.prototype.getMessage = function( stanza ) {
     return stanza.getChild( 'body' ).children.toString();
 };
 
 //Sends a message to the server
-LCTVBot.prototype.message = function( to, message, type ) {
+lctvbot.prototype.message = function( to, message, type ) {
     var stanza;
     if( type == 'groupchat' && to.indexOf( '@' ) == -1 ) {
         to += "@" + this.chatDomain;
@@ -146,20 +146,20 @@ LCTVBot.prototype.message = function( to, message, type ) {
 };
 
 //I may use this later
-// LCTVBot.prototype.getTimeStamp = function( stanza ) {
+// lctvbot.prototype.getTimeStamp = function( stanza ) {
 //   return stanza.getChild( 'delay' ).attrs.stamp;
 // };
 
 //Get the nickname from the stanza
-LCTVBot.prototype.getNickname = function( stanza ) {
+lctvbot.prototype.getNickname = function( stanza ) {
     var from = stanza.attrs.from;
     return from.substring( from.indexOf( '/' ) + 1, from.length );
 };
 
 //Get the channel from the stanza
-LCTVBot.prototype.getChannel = function( stanza ) {
+lctvbot.prototype.getChannel = function( stanza ) {
     var from = stanza.attrs.from;
     return from.substring( 0, from.indexOf( '@' ) );
 }
 
-module.exports = LCTVBot;
+module.exports = lctvbot;

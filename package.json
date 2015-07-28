@@ -1,5 +1,5 @@
 {
-  "name": "LCTVBot",
+  "name": "lctvbot",
   "version": "0.0.1",
   "description": "XMPP based bot system for livecoding.tv",
   "main": "lctvbot.js",

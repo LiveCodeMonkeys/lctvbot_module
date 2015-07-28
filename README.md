@@ -13,9 +13,9 @@ config.json
 
 main.js
 ```js
-var LCTVBot = require( 'LCTVBot' );
+var lctvbot = require( 'lctvbot' );
 var config = require( './config.json' );
-var bot = new LCTVBot( config );
+var bot = new lctvbot( config );
 ```
 
 ##Events
