@@ -140,7 +140,7 @@ lctvbot.prototype.message = function( to, message, type ) {
         to += "@" + this.chatDomain;
     }
     // console.log( [ to, message, type ] );
-    stanza = new ltx.Element( 'message', { to: to, type: type, from: this.config.jid } ).c( 'body' ).t( message );
+    stanza = new ltx.Element( 'message', { to: to, type: type, from: this.config.jid } );
     // console.log( stanza.root().toString() );
     this.client.send( stanza.c( 'body' ).t( message ) );
 };
