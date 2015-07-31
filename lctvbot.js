@@ -177,7 +177,7 @@ lctvbot.prototype.getChannel = function( stanza ) {
 };
 
 lctvbot.prototype.isMod = function( channel, user ) {
-        if( bot.channel[ channel ].users.mods.indexOf( user ) > -1 ) {
+        if( lctvbot.channels[ channel ].users.mods.indexOf( user ) > -1 ) {
             return true;
         }
         return false;
