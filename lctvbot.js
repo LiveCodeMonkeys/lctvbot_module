@@ -176,7 +176,7 @@ lctvbot.prototype.getChannel = function( stanza ) {
     return from.substring( 0, from.indexOf( '@' ) );
 };
 
-lctvbot.prototype.isMod( channel, user ) {
+lctvbot.prototype.isMod = function( channel, user ) {
         if( bot.channel[ channel ].users.mods.indexOf( user ) > -1 ) {
             return true;
         }
