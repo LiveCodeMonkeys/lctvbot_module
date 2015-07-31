@@ -120,6 +120,20 @@ lctvbot.prototype.join = function( channel ) {
     // console.log( this.channels );
 };
 
+lctvbot.prototype.part = function( channel ) {
+    var channelName = channel;
+    if( channel.indexOf( '@' ) == -1 ) {
+        channel += "@" + this.chatDomain;
+    }
+
+    var presence = new ltx.Element( 'presence', {
+        to: channel + '/' + this.config.nickname,
+        type: "unavailable"
+    } ).c( 'x', { xmlns: 'http://jabber.org/protocol/muc' } );
+    this.client.send( presence );
+    this.channels.splice( this.channels.indexOf( channelName ) );
+};
+
 //Set the lctvbots status to available, need to check if LCTV supports this
 lctvbot.prototype.setOnline = function() {
     var presence = new ltx.Element( 'presence', { } )
