@@ -80,7 +80,14 @@ bot.on( 'part', function( channel, nickname, stanza ) {
 Makes the bot join a channel. This can recieve a raw name from the stanza or just the channel name.
 ```js
 bot.join( 'sean111' );
-bot.join( 'sean111@chat.livecoding.tv');
+bot.join( 'sean111@chat.livecoding.tv' );
+```
+
+###part
+Makes the bot leave a channel
+```js
+bot.part( 'sean111' );
+bot.part( 'sean111@chat.livecoding.tv' );
 ```
 
 ###getMessage
@@ -105,4 +112,12 @@ var nickname = bot.getNickname( stanza );
 Gets the channel from the stanza
 ```js
 var channel = bot.getChannel( stanza );
+```
+
+###isMod
+Returns if the user is a mod in the channel or not ( true / false )
+```js
+if( bot.isMod( channel, nickname ) {
+    console.log( nickname + " is a mod" );
+}
 ```
