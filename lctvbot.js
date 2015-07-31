@@ -174,6 +174,12 @@ lctvbot.prototype.getNickname = function( stanza ) {
 lctvbot.prototype.getChannel = function( stanza ) {
     var from = stanza.attrs.from;
     return from.substring( 0, from.indexOf( '@' ) );
-}
+};
 
+lctvbot.prototype.isMod( channel, user ) {
+        if( bot.channel[ channel ].users.mods.indexOf( user ) > -1 ) {
+            return true;
+        }
+        return false;
+};
 module.exports = lctvbot;
