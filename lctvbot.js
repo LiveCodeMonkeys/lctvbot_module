@@ -6,9 +6,6 @@ var ltx = require('node-xmpp-core').ltx;
 var util = require( 'util' );
 var events = require( 'events' );
 
-//Config
-var version = '0.0.1';
-
 var lctvbot = function( config ) {
     this.channels = [];
     this.config = config;
@@ -20,8 +17,6 @@ var lctvbot = function( config ) {
         password: config.password
     } );
 
-    console.log( "LCTV Bot v" + version );
-    console.log( "===================" );
     var self = this;
 
     this.client.on( 'error', function( e ) {
@@ -63,7 +58,7 @@ var lctvbot = function( config ) {
                         from = stanza.attrs.from.substring(0, stanza.attrs.from.indexOf( '/' ) );
                     }
                     // self.emit( 'command#' + command, from, text, stanza );
-                    self.emit( 'command#' + command, self.getChannel( stanza ), text, stanza );
+                    self.emit( 'command#' + command, self.getChannel( stanza ), text, self.getNickname( stanza ), stanza );
                     console.log( 'command: ' + command );
                 }
             }
@@ -150,6 +145,9 @@ lctvbot.prototype.getMessage = function( stanza ) {
 //Sends a message to the server
 lctvbot.prototype.message = function( to, message, type ) {
     var stanza;
+    if( type == undefined ) {
+        type = 'groupchat';
+    }
     if( type == 'groupchat' && to.indexOf( '@' ) == -1 ) {
         to += "@" + this.chatDomain;
     }
