@@ -1,5 +1,5 @@
  ☐ Clean up source code
- ☐ Add part/leave function
- ☐ Create say alias for message function
+ ✔ Add part/leave function @done (15-08-11 11:30)
+ ✔ Create say alias for message function @done (15-08-11 11:30)
  ✔ Make message function default to groupchat @done (15-08-11 11:23)
  ✔ Add nickname parameter to command event @done (15-08-11 11:23)
