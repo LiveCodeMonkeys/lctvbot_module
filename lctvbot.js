@@ -157,6 +157,10 @@ lctvbot.prototype.message = function( to, message, type ) {
     this.client.send( stanza.c( 'body' ).t( message ) );
 };
 
+lctvbot.prototype.say = function( to, message ) {
+    self.message( to, message );
+};
+
 //I may use this later
 // lctvbot.prototype.getTimeStamp = function( stanza ) {
 //   return stanza.getChild( 'delay' ).attrs.stamp;
