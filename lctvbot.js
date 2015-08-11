@@ -158,7 +158,7 @@ lctvbot.prototype.message = function( to, message, type ) {
 };
 
 lctvbot.prototype.say = function( to, message ) {
-    self.message( to, message );
+    this.message( to, message );
 };
 
 //I may use this later
