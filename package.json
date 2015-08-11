@@ -1,6 +1,6 @@
 {
   "name": "lctvbot",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "XMPP based bot system for livecoding.tv",
   "main": "lctvbot.js",
   "dependencies": {
