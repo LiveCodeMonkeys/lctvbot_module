@@ -4,12 +4,8 @@
   "description": "XMPP based bot system for livecoding.tv",
   "main": "lctvbot.js",
   "dependencies": {
-    "async": "^0.2.10",
-    "debug": "^2.2.0",
-    "express": "^3.2.6",
     "node-xmpp-client": "^1.0.0-alpha23",
-    "node-xmpp-core": "^1.0.0-alpha14",
-    "socket.io": "^0.9.17"
+    "node-xmpp-core": "^1.0.0-alpha14"
   },
   "devDependencies": {},
   "scripts": {
